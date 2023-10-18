@@ -51,6 +51,11 @@ export const GET: RequestHandler = async ({ url }) => {
 				data: fontData,
 				weight: 600
 			}
-		]
+		],
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'GET,HEAD,POST,OPTIONS',
+			'Access-Control-Max-Age': '86400'
+		}
 	});
 };
