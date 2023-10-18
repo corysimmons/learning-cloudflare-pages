@@ -1,4 +1,3 @@
-import { ImageResponse as DevImageResponse } from '@ethercorps/sveltekit-og';
 import type { RequestHandler } from '@sveltejs/kit';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -15,7 +14,8 @@ export const GET: RequestHandler = async ({ url }) => {
 	);
 	const templateName = params.get('template') || 'a1';
 
-	const host = import.meta.env.DEV ? 'http://localhost:5173' : 'https://todesktop.com';
+  const isDev = import.meta.env.DEV;
+	const host = isDev ? 'http://localhost:5173' : 'https://todesktop.com';
 
 	const templatePath = path.resolve(__dirname, 'templates', `${templateName}.html`);
 	const template = fs.readFileSync(templatePath, 'utf8');
@@ -29,7 +29,9 @@ export const GET: RequestHandler = async ({ url }) => {
 	const fontFile = await fetch(`${host}/${fontPath}`);
 	const fontData: ArrayBuffer = await fontFile.arrayBuffer();
 
-	if (import.meta.env.DEV) {
+	if (isDev) {
+    const { ImageResponse: DevImageResponse } = await import('@ethercorps/sveltekit-og');
+
 		return DevImageResponse(html, {
 			width: 1200,
 			height: 630,
