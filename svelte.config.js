@@ -1,5 +1,5 @@
-import adapter from '@sveltejs/adapter-cloudflare';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import adapter from '@sveltejs/adapter-cloudflare'
+import {vitePreprocess} from '@sveltejs/kit/vite'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -8,9 +8,8 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site/#sveltekit-cloudflare-configuration
-		adapter: adapter()
-	}
-};
+		adapter: adapter(),
+	},
+}
 
-export default config;
+export default config

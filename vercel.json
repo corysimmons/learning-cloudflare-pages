@@ -1,0 +1,12 @@
+{
+	"crons": [
+		{
+			"path": "/api/scrape?apiKey=e9af22de-b7ad-4eb8-9ac1-42812272ee51",
+			"schedule": "0 14 * * 2"
+		},
+		{
+			"path": "/api/pick?apiKey=e9af22de-b7ad-4eb8-9ac1-42812272ee51",
+			"schedule": "0 0 * * *"
+		}
+	]
+}
