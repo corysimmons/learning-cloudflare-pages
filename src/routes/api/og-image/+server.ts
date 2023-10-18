@@ -1,10 +1,4 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import * as fs from 'fs';
-import * as path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export const GET: RequestHandler = async ({ url }) => {
 	const params = url.searchParams;
@@ -17,8 +11,9 @@ export const GET: RequestHandler = async ({ url }) => {
   const isDev = import.meta.env.DEV;
 	const host = isDev ? 'http://localhost:5173' : 'https://todesktop.com';
 
-	const templatePath = path.resolve(__dirname, 'templates', `${templateName}.html`);
-	const template = fs.readFileSync(templatePath, 'utf8');
+	const templateURL = `${host}/og-image-templates/${templateName}.html`;
+  const templateResponse = await fetch(templateURL);
+	const template = await templateResponse.text();
 
 	const html = template
 		.replace(/\${host}/g, host)
