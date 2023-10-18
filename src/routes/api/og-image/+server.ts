@@ -9,7 +9,7 @@ export const GET: RequestHandler = async ({ url }) => {
 	const templateName = params.get('template') || 'a1';
 
   const isDev = import.meta.env.DEV;
-	const host = isDev ? 'http://localhost:5173' : 'https://todesktop.com';
+	const host = isDev ? 'http://localhost:5173' : 'https://learning-cloudflare-pages.pages.dev/';
 
 	const templateURL = `${host}/og-image-templates/${templateName}.html`;
   const templateResponse = await fetch(templateURL);

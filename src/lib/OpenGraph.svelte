@@ -13,7 +13,7 @@
 
 	let image: string = import.meta.env.DEV
 		? `http://localhost:5173/${endpoint}`
-		: `https://www.todesktop.com/${endpoint}`;
+		: `https://learning-cloudflare-pages.pages.dev/${endpoint}`;
 
 	let url: string = String($page.url);
 </script>
